@@ -36,11 +36,8 @@ Tested on a single configuration, works well but not extensively tested. Therefo
 _Choose one:_
 
 - Download: Download and copy this repository to `/site/plugins/translatedlayout`.
-- Git submodule: `git submodule add https://github.com/daandelange/kirby-translatedlayout.git site/plugins/translatedlayout`
-- Composer: *[unavailable]*
-<!-- Unavailable !!
-- Composer: `composer require daandelange/translatedlayout`
--->
+- Git submodule: `git submodule add https://github.com/daandelange/kirby-translatedlayout.git site/plugins/translatedlayout`.
+- Composer: `composer require daandelange/translatedlayout`.
 
 ## Setup
 

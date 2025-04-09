@@ -36,7 +36,7 @@ Tested on a single configuration, works well but not extensively tested. Therefo
 _Choose one:_
 
 - Download: Download and copy this repository to `/site/plugins/translatedlayout`.
-- Git submodule: `git submodule add https://github.com/daandelange/kirby3-translatedlayout.git site/plugins/translatedlayout`
+- Git submodule: `git submodule add https://github.com/daandelange/kirby-translatedlayout.git site/plugins/translatedlayout`
 - Composer: *[unavailable]*
 <!-- Unavailable !!
 - Composer: `composer require daandelange/translatedlayout`
@@ -141,7 +141,7 @@ fields:
 This can be useful for quickly setting up this plugin in a test environment.  
 *Beware that this will add the fields to your fieldsets if they don't exist yet.*  
 
-To setup your own fieldsets, prefer copy/pasting from [translatedlayoutwithfieldsets.yml](https://github.com/Daandelange/kirby3-TranslatedLayout/blob/master/src/blueprints/fields/translatedlayoutwithfieldsets.yml) and adapt it to your needs.
+To setup your own fieldsets, prefer copy/pasting from [translatedlayoutwithfieldsets.yml](https://github.com/Daandelange/kirby-TranslatedLayout/blob/master/src/blueprints/fields/translatedlayoutwithfieldsets.yml) and adapt it to your needs.
 
 ### Templates
 

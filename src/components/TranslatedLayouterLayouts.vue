@@ -77,7 +77,8 @@
 // Changes from the original template code are commented, to be updated when kirby updates the template code.
 
 import TranslatedBlockLayout from "~/components/TranslatedLayouterLayout.vue";
-import KBlockLayouts from "@KirbyPanel/components/Layouter/Layouts.vue";
+// import KBlockLayouts from "@KirbyPanel/components/Layouter/Layouts.vue"; // K3
+import KBlockLayouts from "@KirbyPanel/components/Forms/Layouts/Layout.vue"; // K 4-5. Needs hack to load `@/mixins/props.js` within: `ln -s "../../../../kirby/panel/src/mixins" ./src/mixins`
 import TranslatedLayoutMixin from "~/components/TranslatedLayoutMixin.js";
 
 /**

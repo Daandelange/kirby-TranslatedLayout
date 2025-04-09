@@ -8,10 +8,14 @@ use \Kirby\Cms\Fieldsets;
 trait TranslatedBlocksTraits {
 
     // Override fieldsets for translations. Fieldsets define block blueprints, which allow controlling their translation status.
-    protected function setFieldsets($fieldsets, $model) {
+    protected function setFieldsets(array|string|null $fieldsets, Kirby\Cms\ModelWithContent $model):void {
 
         // On default lang, use native kirby function, sure not to break.
-        if($model->kirby()->language()->isDefault()) return parent::setFieldsets($fieldsets, $model);// added this line compared to native
+        // Warning: kirby() accesses the model which can't before constructor !
+        if(!$model->kirby()->multilang() || !$model->kirby()->language() || $model->kirby()->language()->isDefault()){
+            parent::setFieldsets($fieldsets, $model);// added this line compared to native
+            return;
+        }
 
         if (is_string($fieldsets) === true) {
             $fieldsets = [];

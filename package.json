@@ -1,11 +1,11 @@
 {
   "name": "TranslatedLayout",
-  "version": "0.3.3-beta",
+  "version": "1.0.0",
   "description": "A layout field with embedded translation logic.",
   "main": "index.js",
   "author": "Daan de Lange",
   "license": "MIT",
-  "repository": "https://github.com/daandelange/kirby3-translatedlayout",
+  "repository": "https://github.com/daandelange/kirby-translatedlayout",
   "scripts": {
     "dev": "kirbyup src/index.js --watch",
     "build": "kirbyup src/index.js"

@@ -1,10 +1,11 @@
 {
+  "version": "1.0.0",
   "name": "TranslatedLayout",
-  "description": "A layout field with embedded translation logic.",
+  "description": "Layout and blocks fields with embedded translation logic.",
   "type": "kirby-plugin",
   "license": "MIT",
-  "homepage": "https://github.com/daandelange/kirby3-translatedlayout",
-  "version": "0.3.3-beta",
+  "homepage": "https://github.com/daandelange/kirby-translatedlayout",
+  "author": "Daan de Lange",
   "authors": [
     {
       "name": "Daan de Lange",
@@ -12,14 +13,21 @@
     }
   ],
   "keywords": [
+    "kirby5",
     "kirby3",
-    "kirby3-plugin",
-    "kirby3-field-plugin"
-],
+    "kirby-cms",
+    "kirby-plugin",
+    "kirby-field-plugin",
+    "kirby-panel-plugin",
+  ],
   "require": {
     "getkirby/composer-installer": "^1.2"
   },
   "extra": {
-    "installer-name": "translatedlayout"
+    "installer-name": "translatedlayout",
+  },
+  "support": {
+    "docs": "https://github.com/daandelange/kirby-translatedlayout/blob/main/README.md",
+    "source": "https://github.com/daandelange/kirby-translatedlayout"
   }
 }

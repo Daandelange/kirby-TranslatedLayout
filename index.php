@@ -1,10 +1,21 @@
 <?php
 use \Kirby\Form\Field\LayoutField; // maybe not needed ?
+use \Kirby\Data\Data;
+//use \Kirby\Cms\App;
 
 require_once(__DIR__ . '/src/classes/TranslatedLayoutField.php');
 require_once(__DIR__ . '/src/classes/TranslatedBlocksField.php');
 
-Kirby::plugin('daandelange/translatedlayout', [
+Kirby::plugin(
+
+    // Kirby plugin info (visible in panel)
+    name: 'daandelange/translatedlayout',
+    info: [
+        'license' => 'MIT'
+    ],
+    version: '1.0.0',
+    extends: [
+
     'fields' => [
         // Undocumented, but identical to kirby's blocks and layout registering
         // Strings are checked against classes then instanciated.
@@ -31,7 +42,8 @@ Kirby::plugin('daandelange/translatedlayout', [
                 // Dynamically inject non-default blocks depending on installed addons
                 // Todo: add more translation settings for community blocks
 
-                //
+                // Inject support for some block plugins
+                // Feel free to add the structure of your addon and submit a PR
                 (in_array('woo/localvideo', $blockBlueprints) ? [
                     'translate' => false,
                     'tabs'  => [
@@ -75,4 +87,5 @@ Kirby::plugin('daandelange/translatedlayout', [
             );
         }
     ],
-]);
+    ] // end: extends array
+);

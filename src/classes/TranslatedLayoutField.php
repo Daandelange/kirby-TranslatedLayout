@@ -153,18 +153,19 @@ class TranslatedLayoutField extends LayoutField {
 
     // Value setter (used in construct, save, display, etc) // opposite of store() ? (also used before store  to recall js values)
     // Note : Panel.page.save passes an array while loadFromContent passes a yaml string.
-    public function fill($value = null){
+    public function fill(mixed $value): static {
 
         // Default lang uses native kirby code, which is faster. :)
         if(
             // Single lang has normal behaviour
             ( $this->kirby()->multilang() === false ) ||
             // Default lang has normal behaviour.
-            ( $this->model()->translation()->isDefault() ) ||
+            ( $this->model()->translation()->language()->isDefault() ) ||
             // if attrs.translate is set to false
             ( $this->translate() === false )
         ){
-            return parent::fill($value);
+            parent::fill($value);
+            return $this;
         }
         
         // <!-- begin original code (with comments added) ---
@@ -237,7 +238,7 @@ class TranslatedLayoutField extends LayoutField {
         $currentLang = $this->kirby()->language()->code();// $this->model()->translation()->code();// commented is more correct, but loads translation strings = useless here
 
         $defaultLangTranslation = $this->model()->translation($defaultLang);
-        if( !$defaultLangTranslation || !$defaultLangTranslation->exists() ){
+        if( !$defaultLangTranslation || !$defaultLangTranslation->version()->exists() ){
             throw new LogicException('Multilanguage is enabled but there is no content for the default language... who\'s the wizzard ?!');
         }
 
@@ -343,13 +344,18 @@ class TranslatedLayoutField extends LayoutField {
 
         // Remember value
         $this->value = $defaultLangLayouts;
+        $this->errors = null;
+        return $this;
     }
 
     // Override the layout settings blueprint, 
-    protected function setSettings($settings = null) {
-        // On default lang, use native kirby function, sure not to break.
-        if($this->kirby()->language()->isDefault()) return parent::setSettings($settings);// added this line compared to native
-
+    protected function setSettings($settings = null) : void {
+        // Changed : On default lang, use native kirby function, sure not to break.
+        if(!$this->kirby()->multilang() || !$this->kirby()->language() || $this->kirby()->language()->isDefault()){
+            parent::setSettings($settings);
+            return;
+        }
+        
 		if (empty($settings) === true) {
 			$this->settings = null;
 			return;

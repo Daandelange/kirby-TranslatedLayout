@@ -87,8 +87,8 @@
 </template>
 
 <script>
-import Column from "@KirbyPanel/components/Layouter/Column.vue";
-import KLayout from "@KirbyPanel/components/Layouter/Layout.vue";
+import Column from "@KirbyPanel/components/Forms/Layouts/LayoutColumn.vue";
+import KLayout from "@KirbyPanel/components/Forms/Layouts/Layout.vue";
 import TranslatedLayoutMixin from "~/components/TranslatedLayoutMixin.js";
 
 /**

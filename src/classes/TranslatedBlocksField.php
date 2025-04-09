@@ -6,6 +6,7 @@ use \Kirby\Cms\Fieldset;
 use \Kirby\Cms\Fieldsets;
 use \Kirby\Exception\LogicException;
 use \Kirby\Cms\Blocks as BlocksCollection;
+use \Kirby\Toolkit\Str;
 
 require_once( __DIR__ . '/TranslatedBlockTraits.php');
 
@@ -54,18 +55,19 @@ class TranslatedBlocksField extends BlocksField {
 
     // Value setter (used in construct, save, display, etc) // opposite of store() ? (also used before store  to recall js values)
     // Note : Panel.page.save passes an array while loadFromContent passes a yaml string.
-    public function fill($value = null){
+    public function fill(mixed $value = null): static {
 
         // Default lang uses native kirby code, which is faster. :)
         if(
             // Single lang has normal behaviour
             ( $this->kirby()->multilang() === false ) ||
             // Default lang has normal behaviour.
-            ( $this->model()->translation()->isDefault() ) ||
+            ( $this->model()->translation()->language()->isDefault() ) ||
             // if attrs.translate is set to false
             ( $this->translate() === false )
         ){
-            return parent::fill($value);
+            parent::fill($value);
+            return $this;
         }
 
         // Fetch translation
@@ -76,7 +78,7 @@ class TranslatedBlocksField extends BlocksField {
         $currentLang = $this->kirby()->language()->code();// $this->model()->translation()->code();// commented is more correct, but loads translation strings = useless here
 
         $defaultLangTranslation = $this->model()->translation($defaultLang);
-        if( !$defaultLangTranslation || !$defaultLangTranslation->exists() ){
+        if( !$defaultLangTranslation || !$defaultLangTranslation->version()->exists() ){
             throw new LogicException('Multilanguage is enabled but there is no content for the default language... who\'s the wizzard ?!');
         }
 
@@ -138,6 +140,8 @@ class TranslatedBlocksField extends BlocksField {
 
         // Remember value
         $this->value = $defaultLangBlocks;
+        $this->errors = null;
+        return $this;
     }
 
     // Override parent routes to intercept pastes

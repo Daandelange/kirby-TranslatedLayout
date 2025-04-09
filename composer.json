@@ -18,13 +18,16 @@
     "kirby-cms",
     "kirby-plugin",
     "kirby-field-plugin",
-    "kirby-panel-plugin",
+    "kirby-panel-plugin"
   ],
   "require": {
     "getkirby/composer-installer": "^1.2"
   },
+  "conflict": {
+    "getkirby/cms": "<5.0.0-beta.6"
+  },
   "extra": {
-    "installer-name": "translatedlayout",
+    "installer-name": "translatedlayout"
   },
   "support": {
     "docs": "https://github.com/daandelange/kirby-translatedlayout/blob/main/README.md",

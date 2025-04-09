@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "name": "TranslatedLayout",
+  "name": "daandelange/translatedlayout",
   "description": "Layout and blocks fields with embedded translation logic.",
   "type": "kirby-plugin",
   "license": "MIT",
